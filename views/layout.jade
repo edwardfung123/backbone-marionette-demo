@@ -1,0 +1,20 @@
+mixin template(id)
+  script(id=id, type='text/template')
+    if block
+      block
+
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/css/bootstrap.css')
+  body
+    block content
+    script(src='/js/jquery.js')
+    script(src='/js/bootstrap.js')
+    script(src='/js/underscore.js')
+    script(src='/js/underscore.string.js')
+    script(src='/js/backbone.js')
+    script(src='/js/backbone.marionette.js')
+    block templates
+    block after_js

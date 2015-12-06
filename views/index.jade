@@ -1,0 +1,57 @@
+extends layout
+
+block content
+  div#app
+
+block after_js
+  script(src='/js/product.js')
+  script(src='/js/views.js')
+  script(src='/js/app.js')
+
+block templates
+  +template('template-app-view')
+    div#products
+      // This will contain all the product info
+      div.container-fluid
+        div.row
+          div.container.products
+    div#cart
+      // This will contain the current shopping cart
+
+  +template('template-products-item-view')
+    div.product.well
+      p.h4.name 
+        strong Name:
+        span &nbsp;<%= name %>
+      p.price
+        strong Price:
+        span &nbsp;<%= price %>
+      p.actions
+        button.btn.btn-primary(data-action='add-to-cart') Add To Cart
+
+  +template('template-cart-view')
+    table.table
+      thead
+        tr
+          th Index
+          th Name
+          th Price
+          th Quantity
+          th Total
+          th Actions
+      tbody
+      tfoot
+        tr
+          th.text-right(colspan="4") Total:
+          th.total.text-left(colspan="2")
+            | $
+            span.total
+
+  +template('template-cart-item-view')
+    td.idx <%= idx %>
+    td.name <%= name %>
+    td.price <%= price %>
+    td.quantity <%= quantity %>
+    td.total <%= total %>
+    td.actions
+      button.btn.btn-danger Remove
